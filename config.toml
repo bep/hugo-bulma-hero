@@ -1,0 +1,48 @@
+
+
+disableKinds = ["taxonomy", "taxonomyTerm"]
+
+sectionPagesMenu = "main"
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    pre = "<i class='fa fa-heart'></i>"
+    url = "/"
+    weight = 1
+
+[params]
+[params.hero_queries]
+[[params.hero_queries.featured_articles]]
+key="Type"
+operator="in"
+match=["docs", "blog"]
+[params.hero_content]
+[params.hero_content.hero]
+title="The world’s fastest framework for building websites"
+subtitle="""Hugo is **one of the most popular** open-source static site generators. 
+With its **amazing speed and flexibility**, Hugo makes building websites fun again.
+"""
+
+[module]
+[[module.imports]]
+path="github.com/bep/portable-hugo-links"
+[[module.imports]]
+path = "github.com/bep/hugo-jslibs/alpinejs_turbolinks"
+[[module.imports]]
+path = "github.com/jgthms/bulma"
+[[module.imports.mounts]]
+source = "bulma.sass"
+target = "assets/scss/bulma.sass"
+[[module.imports.mounts]]
+source = "sass"
+target = "assets/scss/sass"
+[[module.imports]]
+path = "github.com/FortAwesome/Font-Awesome"
+[[module.imports.mounts]]
+source = "scss"
+target = "assets/scss/fontawesome"
+[[module.imports.mounts]]
+source = "webfonts"
+target = "static/webfonts"

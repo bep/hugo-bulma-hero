@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {{ hugo.Generator }}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> {{ .Title }}</title>
+    <link rel="shortcut icon" href="TODO" type="image/x-icon">
+    {{- template "_internal/opengraph.html" . -}}
+    {{- template "_internal/schema.html" . -}}
+    {{- template "_internal/twitter_cards.html" . -}}
+    {{ $options := dict }}
+    {{ $isProd :=  eq hugo.Environment "production "}}
+    {{ $enableSourceMap := not $isProd }}
+    {{ $options := (dict "targetPath" "css/styles.css" "enableSourceMap" $enableSourceMap) }}
+    {{ $styles := resources.Get "scss/styles.scss" }}
+    {{ $styles = $styles | resources.ToCSS $options }}
+    {{ if eq hugo.Environment "production "}}
+    {{ $styles = $styles | minify }}
+    {{ end }}
+    <link href="{{ $styles.RelPermalink }}" rel="stylesheet" />
+    {{ partial "jslibs/alpinejs_turbolinks/script-src.html" }}
+</head>
+
+<body>
+    {{ block "main" . }}{{ end }}
+    <footer class="footer">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-3 is-offset-2">
+                    <h2><strong>Category</strong></h2>
+                    <ul>
+                        <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+                        <li><a href="#">Vestibulum errato isse</a></li>
+                        <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+                        <li><a href="#">Aisia caisia</a></li>
+                        <li><a href="#">Murphy's law</a></li>
+                        <li><a href="#">Flimsy Lavenrock</a></li>
+                        <li><a href="#">Maven Mousie Lavender</a></li>
+                    </ul>
+                </div>
+                <div class="column is-3">
+                    <h2><strong>Category</strong></h2>
+                    <ul>
+                        <li><a href="#">Labore et dolore magna aliqua</a></li>
+                        <li><a href="#">Kanban airis sum eschelor</a></li>
+                        <li><a href="#">Modular modern free</a></li>
+                        <li><a href="#">The king of clubs</a></li>
+                        <li><a href="#">The Discovery Dissipation</a></li>
+                        <li><a href="#">Course Correction</a></li>
+                        <li><a href="#">Better Angels</a></li>
+                    </ul>
+                </div>
+                <div class="column is-4">
+                    <h2><strong>Category</strong></h2>
+                    <ul>
+                        <li><a href="#">Objects in space</a></li>
+                        <li><a href="#">Playing cards with coyote</a></li>
+                        <li><a href="#">Goodbye Yellow Brick Road</a></li>
+                        <li><a href="#">The Garden of Forking Paths</a></li>
+                        <li><a href="#">Future Shock</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
