@@ -6,7 +6,17 @@
         <div class="h-leftcol">{{ partial "section-tree" . }}</div>
         <div class="column is-two-thirds-desktop">
             <div class="content">
+                {{ $cover :=  partial "funcs/get-cover-image.html" . }}
                 <h1>{{ .Title }}</h1>
+                {{ with $cover }}
+                {{ $img := $cover.Fill "300x300" }}
+                {{ with $img }}
+                <figure>
+                    <img src="{{ .RelPermalink }}" alt="{{ .Title }}" width="{{ .Width }}" height="{{ .Height }}">
+                    {{ with .Params.byline }}<figcaption>{{ . }}</figcaption>{{ end }}
+                </figure>
+                {{ end }}
+                {{ end }}
                 {{ .Content}}
             </div>
         </div>

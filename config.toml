@@ -4,15 +4,11 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 
 sectionPagesMenu = "main"
 
-[menu]
-  [[menu.main]]
-    identifier = "home"
-    name = "Home"
-    pre = "<i class='fa fa-heart'></i>"
-    url = "/"
-    weight = 1
+
 
 [params]
+[params.hero_site]
+name="Hugo"
 [params.hero_queries]
 [[params.hero_queries.featured_articles]]
 key="Type"
@@ -24,6 +20,12 @@ title="The world’s fastest framework for building websites"
 subtitle="""Hugo is **one of the most popular** open-source static site generators. 
 With its **amazing speed and flexibility**, Hugo makes building websites fun again.
 """
+logo="images/hero/logo.svg"
+
+[imaging]
+resampleFilter = "CatmullRom"
+quality = 75
+anchor = "smart"
 
 [module]
 [[module.imports]]

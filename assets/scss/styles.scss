@@ -21,7 +21,7 @@ body {
 .h-main {
   overflow: hidden;
   position: relative;
-  padding: 0 1rem
+  padding: 0 1rem;
 }
 
 @include desktop {
@@ -37,8 +37,30 @@ body {
   }
 }
 
+.h-hero-logo {
+  width: 70%;
+  padding-bottom: 2rem;
+}
+
 .content {
-  padding-bottom: 3rem;
+  p:first-of-type {
+    font-weight: 800;
+  }
+
+  h1 {
+    //@extend .has-text-centered;
+    font-size: 3rem;
+  }
+
+  @include desktop {
+    figure {
+      float: right;
+    }
+  }
+}
+
+footer {
+  margin-top: 2rem;
 }
 
 // The left menu column.
@@ -99,27 +121,7 @@ body {
   padding: 5rem 0;
   text-align: center;
 }
-.sandbox {
-  padding: 5rem 0;
-}
-.tile.notification {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-.is-shady {
-  animation: flyintoright 0.4s backwards;
-  background: #fff;
-  box-shadow: rgba(0, 0, 0, 0.1) 0 1px 0;
-  border-radius: 4px;
-  display: inline-block;
-  margin: 10px;
-  position: relative;
-  transition: all 0.2s ease-in-out;
-}
-.is-shady:hover {
-  box-shadow: 0 10px 16px rgba(0, 0, 0, 0.13), 0 6px 6px rgba(0, 0, 0, 0.19);
-}
+
 /*adds font awesome stars*/
 footer li:before {
   content: "\f5d2";
@@ -127,4 +129,14 @@ footer li:before {
   float: left;
   margin-left: -1.5em;
   color: $link;
+}
+
+.navbar-item {
+  font-weight: 800;
+}
+
+.is-gradient {
+  $gradient-top-left: darken(saturate(adjust-hue($info, -10deg), 10%), 10%);
+  $gradient-bottom-right: lighten(saturate(adjust-hue($info, 10deg), 5%), 5%);
+  background-image: linear-gradient(141deg, $gradient-top-left 0%, $info 71%, $gradient-bottom-right 100%);
 }
