@@ -10,7 +10,7 @@
                 {{ .title | markdownify }}
             </h1>
             <h2 class="subtitle">
-               {{ .subtitle | markdownify }}
+                {{ .subtitle | markdownify }}
             </h2>
             {{ end }}
         </div>
@@ -24,24 +24,37 @@
 </div>
 <section class="container">
     <div class="columns features">
-        {{ $cards := partial "funcs/query-builder.html" site.Params.hero_queries.featured_articles }}
+        {{ $cards := partial "funcs/build-query.html" site.Params.hero_queries.featured_articles | first 3 }}
         {{ range $cards }}
         <div class="column is-4">
             <div class="card is-shady">
+                {{ $cover :=  partial "funcs/get-cover-image.html" . }}
                 <div class="card-image has-text-centered">
-                    <i class="fa fa-paw"></i>
+                    <figure class="image is-4by3">
+                        {{ with $cover }}
+                        {{ $img := $cover.Fill "640x480" }}
+                        <img src="{{ $img.RelPermalink }}" alt="{{ $img.Title }}">
+                        {{ else }}
+                        <img src="https://picsum.photos/640/480/?random" alt="Description">
+                        {{ end }}
+                    </figure>
                 </div>
                 <div class="card-content">
                     <div class="content">
                         <h4>{{ .Title }}</h4>
-                        <p>{{ .Summary }}</p>
+                        <p>{{ .Summary | truncate 200  }}
+
+                        {{ with $cover }}
+                        {{ with .Params.byline }}<small><i>{{ . }}</i></small>{{ end }}
+                        {{ end }}
+                        </p>
                         <p><a href="{{ .RelPermalink }}">Learn more</a></p>
                     </div>
                 </div>
             </div>
         </div>
         {{ end }}
-       
+
     </div>
     <div class="intro column is-8 is-offset-2">
         <h2 class="title">Perfect for developers or designers!</h2><br>

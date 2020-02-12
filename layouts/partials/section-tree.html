@@ -1,0 +1,19 @@
+<aside class="menu">
+    {{ template "section-tree-nav"  .FirstSection  }}
+</aside>
+{{ define "section-tree-nav" }}
+{{ if .RegularPages }}
+<p class="menu-label">
+    {{ .LinkTitle }}
+</p>
+{{ end }}
+<ul class="menu-list">
+    {{ range .Pages }}
+    {{ if .Pages }}
+    {{ template "section-tree-nav" . }}
+    {{ else }}
+    <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+    {{ end }}
+    {{ end }}
+</ul>
+{{ end }}

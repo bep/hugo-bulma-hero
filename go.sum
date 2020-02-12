@@ -3,6 +3,8 @@ github.com/FortAwesome/Font-Awesome v0.0.0-20200205143640-0d1f27efb836/go.mod h1
 github.com/FortAwesome/Font-Awesome v4.7.0+incompatible h1:3trjm7NtX5NXlju1AxSWSzedDMq2hsfH78Qtqrc8EgY=
 github.com/FortAwesome/Font-Awesome v4.7.0+incompatible/go.mod h1:IUgezN/MFpCDIlFezw3L8j83oeiIuYoj28Miwr/KUYo=
 github.com/alpinejs/alpine v1.9.7/go.mod h1:BKI81egATMnaKqFeX5HEfYMnjZjcjcZmrYAu5Nck+EY=
+github.com/bep/hugo-dummy-content v0.0.0-20200212163541-a193b39e0825 h1:odalj500VwCfhpfynsomzraoWZXLe68SI+sMYjB4wOw=
+github.com/bep/hugo-dummy-content v0.0.0-20200212163541-a193b39e0825/go.mod h1:xoSEb9mk9xkY7Sd0oN6AB8gDsvbal8YKKIicKcsrqcA=
 github.com/bep/hugo-jslibs v0.0.0-20200204093636-5f108da7e831 h1:2QuaC7Ffx/2mI4vPl8YddFQ02jijQ1IS5vJTZFbATjM=
 github.com/bep/hugo-jslibs/alpinejs v0.1.0/go.mod h1:lsA5YidERLfH5waalbVhqmzDY7RElccnQzIrsEmMKSs=
 github.com/bep/hugo-jslibs/alpinejs_turbolinks v0.2.0 h1:SpZnurR8V/xvTDUsIryowK3VEgOJaunateLYCtnlPEE=

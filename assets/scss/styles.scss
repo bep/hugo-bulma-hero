@@ -8,10 +8,55 @@ $fa-font-path: "../webfonts";
 @import "hero_variables.scss";
 @import "bulma.sass";
 
+$main-spacing: 2rem;
+
 html,
 body {
-  background:$hero-bg-color;
+  .hugo-home {
+    margin-left: 0;
+    background: $h-bg-color;
+  }
 }
+
+.h-main {
+  overflow: hidden;
+  position: relative;
+  padding: 0 1rem
+}
+
+@include desktop {
+  .h-main {
+    margin: 0 3rem;
+  }
+}
+
+@include mobile {
+  .reverse-columns {
+    flex-direction: column-reverse;
+    display: flex;
+  }
+}
+
+.content {
+  padding-bottom: 3rem;
+}
+
+// The left menu column.
+.h-leftcol {
+  @extend .column;
+  max-width: 250px;
+  margin-left: 1rem;
+}
+
+.h-breadcrumb {
+  display: flex;
+  justify-content: space-between;
+  padding: $main-spacing 0;
+  .breadcrumb:not(:last-child) {
+    margin-bottom: 0;
+  }
+}
+
 .hero-body .container {
   max-width: 700px;
 }
@@ -81,5 +126,5 @@ footer li:before {
   font-family: "Font Awesome 5 Free";
   float: left;
   margin-left: -1.5em;
-  color:$link;
+  color: $link;
 }
