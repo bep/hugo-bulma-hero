@@ -2,8 +2,8 @@
 {{- with $img -}}
 {{ $medium := $img.Resize "400x" -}}
 <figure class="image-caption">
-<img alt="{{ $.Text }}" src="{{ $medium.RelPermalink }}" />
+<img alt="{{ $.Text }}" src="{{ $medium.RelPermalink }}" class="markdown" />
 <figcaption>{{ with $.Title | safeHTML }}{{ . }}{{ end }}</figcaption>
 </figure>
 {{- else -}}
-<img src="{{ .Destination | safeURL }}"  alt="{{ $.Text }}" />{{- end -}}
+<img src="{{ .Destination | safeURL }}"  alt="{{ $.Text }}" class="markdown" />{{- end -}}

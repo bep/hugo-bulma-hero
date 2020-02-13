@@ -1,62 +1,72 @@
-<nav class="navbar {{ if not .IsHome }} is-info is-gradient has-shadow{{ end }}" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item has-text-weight-bold has-text-primary	 is-size-5 is-uppercase" href="{{ site.Home.RelPermalink }}">
-       {{ site.Params.hero_site.name }}
-      </a>
-  
-      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="main-nav">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-  
-    <div id="main-nav" class="navbar-menu">
-      <div class="navbar-start">
-            {{ $currentPage := . }}
-            {{ range .Site.Menus.main }}
-            <a href="{{ .URL }}" class="navbar-item{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} is-active{{end}}">{{ .Title }}</a>
-            {{ end }}
-      </div>
-  
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-primary">
-              <strong>Sign up</strong>
-            </a>
-            <a class="button is-light">
-              Log in
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
+<nav class="navbar {{ if not .IsHome }} is-info is-gradient has-shadow{{ end }}" role="navigation"
+  aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item has-text-weight-bold has-text-primary	 is-size-5 is-uppercase"
+      href="{{ site.Home.RelPermalink }}">
+      {{ site.Params.hero_site.name }}
+    </a>
 
-        // Get all "navbar-burger" elements
-        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-      
-        // Check if there are any navbar burgers
-        if ($navbarBurgers.length > 0) {
-      
-          // Add a click event on each of them
-          $navbarBurgers.forEach( el => {
-            el.addEventListener('click', () => {
-      
-              // Get the target from the "data-target" attribute
-              const target = el.dataset.target;
-              const $target = document.getElementById(target);
-      
-              // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-              el.classList.toggle('is-active');
-              $target.classList.toggle('is-active');
-      
-            });
-          });
-        }
-      
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="main-nav">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="main-nav" class="navbar-menu data-turbolinks-permanent">
+    <div class="navbar-start">
+      {{ $currentPage := . }}
+      {{ range .Site.Menus.main }}
+      {{ $isActive := (or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .)) }}
+      <a class="navbar-item{{if $isActive }} is-active{{end}}" href="{{ .URL }}">
+        {{ with .Pre }}
+        <span></span><span class="icon">
+          <i class="{{ . }}"></i>
+        </span></span>
+        {{ end }}
+        {{ .Title }}
+      </a>
+      {{ end }}
+    </div>
+  </div>
+  <div class="navbar-end">
+    <div class="navbar-item">
+      <div class="buttons">
+        <a class="button is-primary">
+          <strong>Sign up</strong>
+        </a>
+        <a class="button is-light">
+          Log in
+        </a>
+      </div>
+    </div>
+  </div>
+  </div>
+</nav>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    // Get all "navbar-burger" elements
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+    // Check if there are any navbar burgers
+    if ($navbarBurgers.length > 0) {
+
+      // Add a click event on each of them
+      $navbarBurgers.forEach(el => {
+        el.addEventListener('click', () => {
+
+          // Get the target from the "data-target" attribute
+          const target = el.dataset.target;
+          const $target = document.getElementById(target);
+
+          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+          el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+
+        });
       });
+    }
+
+  });
 </script>

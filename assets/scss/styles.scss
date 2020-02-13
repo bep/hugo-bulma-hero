@@ -42,9 +42,42 @@ body {
   padding-bottom: 2rem;
 }
 
+.hugo-home {
+  figure.image {
+    position: relative;
+
+    &:hover {
+      img {
+        filter: blur(1px);
+      }
+      .glass {
+        display: block;
+      }
+    }
+
+    .glass {
+      display: none;
+      position: absolute;
+      z-index: 10;
+      top: 30px;
+      right: 20px;
+      font-size: 5rem;
+      color: $white;
+    }
+  }
+}
+
 .content {
   p:first-of-type {
     font-weight: 800;
+  }
+
+  img.markdown {
+    float: left;
+    padding: 0 2rem 0 0;
+    @include desktop {
+      width: 50%;
+    }
   }
 
   h1 {

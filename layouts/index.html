@@ -25,6 +25,8 @@
         nisi ut aliquip ex ea commodo consequat.
     </p>
 </div>
+
+{{ $imageFilters := slice (images.Grayscale) }}
 <section class="container">
     <div class="columns features">
         {{ $cards := partial "funcs/build-query.html" site.Params.hero_queries.featured_articles | first 3 }}
@@ -33,14 +35,11 @@
             <div class="card is-shady">
                 {{ $cover :=  partial "funcs/get-cover-image.html" . }}
                 <div class="card-image has-text-centered">
-                    <figure class="image is-4by3">
                         {{ with $cover }}
-                        {{ $img := $cover.Fill "640x480" }}
-                        <img src="{{ $img.RelPermalink }}" alt="{{ $img.Title }}">
-                        {{ else }}
-                        <img src="https://picsum.photos/640/480/?random" alt="Description">
+                        {{ $img := $cover.Fill "640x480" | images.Filter $imageFilters }}
+                        {{ $big := $cover.Resize "1000x center" }}
+                        {{ template "home-modal-image" (dict "img1" $img "img2" $big "class" "is-4by3")}}
                         {{ end }}
-                    </figure>
                 </div>
                 <div class="card-content">
                     <div class="content">
@@ -48,10 +47,10 @@
                         <p>{{ .Summary | truncate 200  }}
 
                             {{ with $cover }}
-                            3{{ with .Params.byline }}<small><i>{{ . }}</i></small>{{ end }}
+                            {{ with .Params.byline }}<small><i>{{ . }}</i></small>{{ end }}
                             {{ end }}
                         </p>
-                        <p><a href="{{ .RelPermalink }}">Learn more</a></p>
+                        <p><a href="{{ .RelPermalink }}">Read more</a></p>
                     </div>
                 </div>
             </div>
@@ -83,10 +82,28 @@
                 {{ end }}
                 <div class="tile is-child box">
                     <p class="title">{{ .LinkTitle }}</p>
-                    <figure class="image is-4by3">
-                        <img src="https://bulma.io/images/placeholders/640x480.png">
-                      </figure>
-                    <p class="subtitle">{{ .Summary }}</p>
+                    {{ $cover :=  partial "funcs/get-cover-image.html" . }}
+                    {{ with $cover }}
+                    {{ $img := $cover.Fill "800x400 center" | images.Filter $imageFilters }}
+                    {{ $big := $cover.Resize "1000x center" }}
+                    {{ template "home-modal-image" (dict "img1" $img "img2" $big "class" "is-2by1")}}
+                    {{ end }}
+
+                    <p class="subtitle">
+                        {{ with $cover }}
+                        {{ with .Params.byline }}<p><small>{{ . }}</small></p>{{ end }}
+                        {{ end }}
+                    </p>
+                    <p class="subtitle">
+                        {{ if $newDiv }}
+                        {{ .Content }}
+                        {{ else }}
+                        {{ .Summary }}
+                        {{ end }}
+
+                    </p>
+                    <hr />
+                    <p><a href="{{ .RelPermalink }}">Read more</a></p>
                 </div>
                 {{ if $newDiv }}
             </div>
@@ -96,4 +113,22 @@
     </div>
     </div>
 </section>
+{{ end }}
+
+{{ define "home-modal-image" }}
+<div class="control" x-data="{ show: false }">
+    <figure class="image {{ with .class }}{{ . }}{{ end }}" @click="show = ! show">
+        <img src="{{ .img1.RelPermalink }}">
+        <i class="glass fas fa-search"></i>
+    </figure>
+    <div class="modal" x-bind:class="{ 'is-active': show }">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <p class="image">
+                <img src="{{ .img2.RelPermalink }}" alt="{{ .img2.Title }}">
+            </p>
+        </div>
+        <button @click="show = ! show" class="modal-close is-large" aria-label="close"></button>
+    </div>
+</div>
 {{ end }}
