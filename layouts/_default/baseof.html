@@ -21,7 +21,9 @@
     {{ $styles = $styles | minify }}
     {{ end }}
     <link href="{{ $styles.RelPermalink }}" rel="stylesheet" />
-    {{ partial "jslibs/alpinejs_turbolinks/script-src.html" }}
+    {{ partial "jslibs/alpinejs/script-src.html" }}
+    {{ partial "jslibs/turbolinks/script-src.html" }}
+
 </head>
 
 <body class="hugo-{{ .Kind }}">
