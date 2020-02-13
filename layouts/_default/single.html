@@ -9,7 +9,7 @@
                 {{ $cover :=  partial "funcs/get-cover-image.html" . }}
                 <h1>{{ .Title }}</h1>
                 {{ with $cover }}
-                {{ $img := $cover.Fill "300x300" }}
+                {{ $img := $cover.Fill "800x600" }}
                 {{ with $img }}
                 <figure>
                     <img src="{{ .RelPermalink }}" alt="{{ .Title }}" width="{{ .Width }}" height="{{ .Height }}">

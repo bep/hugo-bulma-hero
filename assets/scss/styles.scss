@@ -68,27 +68,33 @@ body {
 }
 
 .content {
+  display: grid;
+  grid-template-columns: minmax(1.2rem, 1fr) minmax(auto, 69ch) minmax(1.2rem, 1fr);
+
+  // Position text paragraphs into the second (middle) column.
+  // TODO(bep) wildcard?
+  p,
+  h1,
+  h2,h3,h4,h5,blockquote,ul,ol {
+    grid-column: 2;
+  }
+
+  // Position images to take up all three columns.
+  img,
+  figure {
+    grid-column: 1 / 4;
+    width: 100%;
+    max-width: 100ch;
+    justify-self: center;
+  }
+
   p:first-of-type {
     font-weight: 800;
   }
 
-  img.markdown {
-    float: left;
-    padding: 0 2rem 0 0;
-    @include desktop {
-      width: 50%;
-    }
-  }
-
   h1 {
-    //@extend .has-text-centered;
+    @extend .has-text-centered;
     font-size: 3rem;
-  }
-
-  @include desktop {
-    figure {
-      float: right;
-    }
   }
 }
 
