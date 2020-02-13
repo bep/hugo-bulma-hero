@@ -1,5 +1,7 @@
 **Niote:** Work In progress.
 
+View on [Netlify](https://hugo-bulma-hero.netlify.com/).
+
 This is a thme with lots of powers, but an extremely simple build, thanks to [Hugo Modules](https://gohugo.io/hugo-modules/). Only one (optional) NPM dependency (PostCSS).
 
 Some bullet points:
