@@ -117,11 +117,11 @@
 
 {{ define "home-modal-image" }}
 <div class="control" x-data="{ show: false }">
-    <figure class="image {{ with .class }}{{ . }}{{ end }}" @click="show = ! show">
+    <figure class="image {{ with .class }}{{ . }}{{ end }}" @click="show = ! show" @click.away="show = false">
         <img src="{{ .img1.RelPermalink }}">
         <i class="glass fas fa-search"></i>
     </figure>
-    <div class="modal" x-bind:class="{ 'is-active': show }">
+    <div class="modal" x-bind:class="{ 'is-active': show }" @keydown.escape.window="show = false">
         <div class="modal-background"></div>
         <div class="modal-content">
             <p class="image">
