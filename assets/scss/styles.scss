@@ -48,7 +48,7 @@ body {
 
     &:hover {
       img {
-        filter: blur(1px);
+        opacity: 0.7;
       }
       .glass {
         display: block;
@@ -56,13 +56,14 @@ body {
     }
 
     .glass {
-      display: none;
+      //display: none;
       position: absolute;
       z-index: 10;
-      top: 30px;
-      right: 20px;
-      font-size: 5rem;
-      color: $white;
+      bottom: 10px;
+      right: 10px;
+      font-size: 1rem;
+      color: $white-ter;
+      opacity: 0.5;
     }
   }
 }

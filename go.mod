@@ -9,3 +9,5 @@ require (
 	github.com/bep/hugo-jslibs/turbolinks v0.1.0 // indirect
 	github.com/jgthms/bulma v0.0.0-20200206142631-0c43b9e4663a // indirect
 )
+
+replace github.com/bep/hugo-dummy-content => /Users/bep/dev/sites/hugo-dummy-content
